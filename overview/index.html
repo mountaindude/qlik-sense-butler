@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>Overview and features - Butler documentation</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Overview and features";
+    var mkdocs_page_input_path = "overview.md";
+    var mkdocs_page_url = "/overview/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Butler documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Overview and features</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#overview">Overview</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#rest_endpoints">REST endpoints</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#handler_for_sense_log_messages">Handler for Sense log messages</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#mqtt_handlers">MQTT handlers</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#extending_butler">Extending Butler</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../getting-started/">Getting started</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../project-layout/">Project layout</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../install-config/">Installation and configuration</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../running/">Running Butler</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Features</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../rest/">REST API</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../log-events/">Log event handlers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../mqtt/">MQTT integration</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../tools-used/">Tools used</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Butler documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Overview and features</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/mountaindude/butler" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h1>
+<p>Butler is a Node.js based proxy app for providing add-on features to Qlik Sense.<br />
+Some of the features can be used from Sense load scripts, while other provide integration with other systems.</p>
+<p>The app started out as a way of posting to <a href="https://slack.com/">Slack</a> from Qlik Sense load scripts, but has since been generalized and now supports the following high level features:</p>
+<ul>
+<li>REST endpoints that can be called from Sense load scripts or external systems.</li>
+<li>Event proxies used to forward messages from Sense's logging framework.</li>
+</ul>
+<h1 id="rest_endpoints">REST endpoints<a class="headerlink" href="#rest_endpoints" title="Permanent link">&para;</a></h1>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/butlerPing</code></td>
+<td>Desc</td>
+</tr>
+<tr>
+<td><code>/createDir</code></td>
+<td>Create directories (anywhere in the file system) on the server where Butler is running</td>
+</tr>
+<tr>
+<td><code>/createDirQVD</code></td>
+<td>Create directories (relative to a hard coded path) on the server where Butler is running</td>
+</tr>
+<tr>
+<td><code>/getDiskSpace</code></td>
+<td>Check available disk space</td>
+</tr>
+<tr>
+<td><code>/mqttPublishMessage</code></td>
+<td>Publish message to MQTT topic</td>
+</tr>
+<tr>
+<td><code>/senseAppDump</code></td>
+<td>...</td>
+</tr>
+<tr>
+<td><code>/senseListApps</code></td>
+<td>...</td>
+</tr>
+<tr>
+<td><code>/senseQRSPing</code></td>
+<td>...</td>
+</tr>
+<tr>
+<td><code>/senseStartTask</code></td>
+<td>...</td>
+</tr>
+<tr>
+<td><code>/slackPostMessage</code></td>
+<td>Post to Slack from Sense load scripts</td>
+</tr>
+</tbody>
+</table>
+<h1 id="handler_for_sense_log_messages">Handler for Sense log messages<a class="headerlink" href="#handler_for_sense_log_messages" title="Permanent link">&para;</a></h1>
+<p>It is possible to hook into Sense's logging framework, and have log events forwarded to Butler.<br />
+Once there, Butler can act as needed on the messages. Currently Butler forwards some messages to Slack (for notifying humans that some event occurred) and MQTT (for notifying other systems that some event occurred).</p>
+<h1 id="mqtt_handlers">MQTT handlers<a class="headerlink" href="#mqtt_handlers" title="Permanent link">&para;</a></h1>
+<p>MQTT is a light weight pub-sub protocol developed for efficient machine-to-machine message sending. The protocol was developed with embedded systems (IoT and other low CPU/memory systems) in mind, and there are client implementations available in many different languages/platforms. It is also a mature protocol that has proven its stability over many years.  </p>
+<p>Adding in- and out-bound MQTT support to Sense opens up a very interesting set of possibilities:   </p>
+<ul>
+<li>Start Sense tasks when a message arrives in a particular MQTT topic. Other systems can very easily trigger Sense reloads this way. Many cases where upstream sources are today polled can be avoided, with lower server load and more up-to-date data for end users as results.</li>
+<li>Send MQTT messages from Sense load script, notifying other systems that some set of files have been created and are available for consumption.</li>
+<li>Use as a real-time debugging channel during development of Sense apps. By sending MQTT messages from the load script, the developer can inspect the value of variables, tables etc during different parts of the reload process.</li>
+</ul>
+<h1 id="extending_butler">Extending Butler<a class="headerlink" href="#extending_butler" title="Permanent link">&para;</a></h1>
+<p>Given the richness of the Sense APIs, it is easy to add new REST endpoints that encapsulate API functions of interest.
+On the other hand, given the vast number of modules in npm, it is quite easy to add integrations to additional services. Current ideas include linking to services like <a href="https://pushover.net/">Pushover</a>, sending tweets, controlling USB status lights like <a href="https://blink1.thingm.com/">Blink(1)</a> etc.  </p>
+<p>*
+Forward user audit events (session start/stop, connection open/close) to Slack and MQTT</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../getting-started/" class="btn btn-neutral float-right" title="Getting started">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/mountaindude/butler" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../getting-started/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

@@ -3,7 +3,7 @@
 
     
     <url>
-     <loc>None/</loc>
+     <loc>https://mountaindude.github.io/butler//</loc>
      <lastmod>2016-06-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -11,7 +11,7 @@
 
     
     <url>
-     <loc>None/overview/</loc>
+     <loc>https://mountaindude.github.io/butler//overview/</loc>
      <lastmod>2016-06-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -19,7 +19,7 @@
 
     
     <url>
-     <loc>None/getting-started/</loc>
+     <loc>https://mountaindude.github.io/butler//getting-started/</loc>
      <lastmod>2016-06-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -27,7 +27,7 @@
 
     
     <url>
-     <loc>None/project-layout/</loc>
+     <loc>https://mountaindude.github.io/butler//project-layout/</loc>
      <lastmod>2016-06-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -35,7 +35,7 @@
 
     
     <url>
-     <loc>None/install-config/</loc>
+     <loc>https://mountaindude.github.io/butler//install-config/</loc>
      <lastmod>2016-06-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -43,7 +43,7 @@
 
     
     <url>
-     <loc>None/running/</loc>
+     <loc>https://mountaindude.github.io/butler//running/</loc>
      <lastmod>2016-06-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -52,19 +52,19 @@
     
         
     <url>
-     <loc>None/rest/</loc>
+     <loc>https://mountaindude.github.io/butler//rest/</loc>
      <lastmod>2016-06-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/log-events/</loc>
+     <loc>https://mountaindude.github.io/butler//log-events/</loc>
      <lastmod>2016-06-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/mqtt/</loc>
+     <loc>https://mountaindude.github.io/butler//mqtt/</loc>
      <lastmod>2016-06-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -73,7 +73,7 @@
 
     
     <url>
-     <loc>None/tools-used/</loc>
+     <loc>https://mountaindude.github.io/butler//tools-used/</loc>
      <lastmod>2016-06-27</lastmod>
      <changefreq>daily</changefreq>
     </url>

@@ -122,12 +122,12 @@
         }, 
         {
             "location": "/tools-used/", 
-            "text": "Tools used to create Butler\n\n\nBelow follows a (most likely non complete) list of tools that were used to create Butler.\n\nIt is intended to serve as a reminder to self for how to carry out various tasks, some of which may only be occasionally used.\nThus, please treat this page for what it is...\n\n\n\n\nSyntax checking and linting: \nESLint\n\n\nConfig files in node.js: \nnode-config\n\n\nCommand line parameter parsing in node.js: \nyargs", 
+            "text": "Tools used to create Butler\n\n\nBelow follows a (most likely non complete) list of tools that were used to create Butler.\n\nIt is intended to serve as a reminder to self for how to carry out various tasks, some of which may only be occasionally used.\nThus, please treat this page for what it is...\n\n\n\n\nSyntax checking and linting: \nESLint\n\n\nConfig files in node.js: \nnode-config\n\n\nCommand line parameter parsing in node.js: \nyargs\n\n\nMkDocs for creating doc site: \nMkDocs\n\n\nGitHub Pages (github.io) for hosting docs. Pushing docs to github.io: \nmkdocs gh-deploy --clean", 
             "title": "Tools used"
         }, 
         {
             "location": "/tools-used/#tools_used_to_create_butler", 
-            "text": "Below follows a (most likely non complete) list of tools that were used to create Butler. \nIt is intended to serve as a reminder to self for how to carry out various tasks, some of which may only be occasionally used.\nThus, please treat this page for what it is...   Syntax checking and linting:  ESLint  Config files in node.js:  node-config  Command line parameter parsing in node.js:  yargs", 
+            "text": "Below follows a (most likely non complete) list of tools that were used to create Butler. \nIt is intended to serve as a reminder to self for how to carry out various tasks, some of which may only be occasionally used.\nThus, please treat this page for what it is...   Syntax checking and linting:  ESLint  Config files in node.js:  node-config  Command line parameter parsing in node.js:  yargs  MkDocs for creating doc site:  MkDocs  GitHub Pages (github.io) for hosting docs. Pushing docs to github.io:  mkdocs gh-deploy --clean", 
             "title": "Tools used to create Butler"
         }
     ]

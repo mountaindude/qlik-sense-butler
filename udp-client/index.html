@@ -8,7 +8,7 @@
   
   
   
-  <title>Getting started - Butler documentation</title>
+  <title>UDP client - Butler documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -23,9 +23,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Getting started";
-    var mkdocs_page_input_path = "getting-started.md";
-    var mkdocs_page_url = "/getting-started/";
+    var mkdocs_page_name = "UDP client";
+    var mkdocs_page_input_path = "udp-client.md";
+    var mkdocs_page_url = "/udp-client/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -79,15 +79,8 @@
 <li>
           
             <li>
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Getting started</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#getting_started">Getting started</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../getting-started/">Getting started</a>
         
     </li>
 <li>
@@ -147,8 +140,19 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../udp-client/">UDP client</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">UDP client</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#udp_client">UDP client</a></li>
+                
+                    <li><a class="toctree-l4" href="#testing_the_session_startstop_connection_openclose_udp_server">Testing the session start/stop, connection open/close UDP server</a></li>
+                
+                    <li><a class="toctree-l4" href="#testing_the_failed_task_udp_server">Testing the failed task UDP server</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -198,8 +202,12 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Features &raquo;</li>
+        
+      
     
-    <li>Getting started</li>
+    <li>UDP client</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -213,12 +221,43 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="getting_started">Getting started<a class="headerlink" href="#getting_started" title="Permanent link">&para;</a></h1>
-<p>Sorry - there is no installer for Butler.<br />
-You will need to work a bit on the command line to set things up.  </p>
-<p>It's not as bad as it sounds though, a few pieces of software (most notably <a href="https://nodejs.org/en/">node.js</a> and some node modules) need to be installed, but the default options should be good to use, at least as of this writing.</p>
-<p>Follow the <a href="../install-config/">installation and configuration instructions</a> - they will guide through the setup process, including requirements and customisation.<br />
-Then browse through <a href="../sample-code/">the examples</a> to get an understanding of how to use Butler.</p>
+                <h1 id="udp_client">UDP client<a class="headerlink" href="#udp_client" title="Permanent link">&para;</a></h1>
+<p>Butler includes a very basic UDP client, which can be used to send test messages to Butler's UDP servers.<br />
+This can be useful when debugging a Butler server, when adding new UDP handlers etc. 
+The client is built using node.js, and is found in the src/udp_client directory.</p>
+<p>Run the app to show its help text (in this case the UDP client is executed from a Mac):</p>
+<pre><code>$ node udp_client.js
+Butler UDP client test app
+
+Options:
+  --about, -a  This app sends messages to the UDP server(s) built into Butler
+               (or any other UDP server)
+  --ip, -i     IP address of UDP server message will be sent to       [required]
+  --port, -p   Port on UDP server                            [number] [required]
+  --msg, -m    Message to send                         [default: "Test message"]
+
+Missing required arguments: ip, port
+$
+</code></pre>
+<h2 id="testing_the_session_startstop_connection_openclose_udp_server">Testing the session start/stop, connection open/close UDP server<a class="headerlink" href="#testing_the_session_startstop_connection_openclose_udp_server" title="Permanent link">&para;</a></h2>
+<p>Sending a message to Butler looks like this (with a fake IP address):</p>
+<pre><code>$ node udp_client.js --ip 1.2.3.4 -p 9997 -m "Abc;123;456;test"
+UDP message sent to 1.2.3.4:9997, 16 bytes.
+$
+</code></pre>
+<p>Butler will receive the message, parse it, and a) send a message to a Slack channel (customizable in the <a href="../install-config/#configuration">Butler config file</a>), 
+and b) publish a MQTT message to the topic specified in, again, the Butler config file.</p>
+<p>The output to Slack looks like this (the default use of port 9997 is to handle audit events, i.e. users starting/ending sessions etc):   </p>
+<p><img alt="alt text" src="../img/slack_audit_event_test_1.jpg" title="Slack audit event test" /></p>
+<h2 id="testing_the_failed_task_udp_server">Testing the failed task UDP server<a class="headerlink" href="#testing_the_failed_task_udp_server" title="Permanent link">&para;</a></h2>
+<p>Sending a message to port 9998 will test the UDP server responsible for handling task failure messages:</p>
+<p>Sending a message to Butler looks like this (with a fake IP address):</p>
+<pre><code>$ node udp_client.js --ip 1.2.3.4 -p 9998 -m "Abc;123;456;test"
+UDP message sent to 1.2.3.4:9998, 16 bytes.
+$
+</code></pre>
+<p>The resulting Slack message looks like this:  </p>
+<p><img alt="alt text" src="../img/slack_failed_task_1.jpg" title="Slack failed task" /></p>
               
             </div>
           </div>
@@ -226,10 +265,10 @@ Then browse through <a href="../sample-code/">the examples</a> to get an underst
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../project-layout/" class="btn btn-neutral float-right" title="Project layout">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../sample-code/" class="btn btn-neutral float-right" title="Examples">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../overview/" class="btn btn-neutral" title="Overview and features"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../mqtt/" class="btn btn-neutral" title="MQTT integration"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -257,10 +296,10 @@ Then browse through <a href="../sample-code/">the examples</a> to get an underst
           <a href="https://github.com/mountaindude/butler" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../overview/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../mqtt/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../project-layout/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../sample-code/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

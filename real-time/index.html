@@ -8,7 +8,7 @@
   
   
   
-  <title>Getting started - Butler documentation</title>
+  <title>Real time metrics - Butler documentation</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -23,9 +23,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Getting started";
-    var mkdocs_page_input_path = "getting-started.md";
-    var mkdocs_page_url = "/getting-started/";
+    var mkdocs_page_name = "Real time metrics";
+    var mkdocs_page_input_path = "real-time.md";
+    var mkdocs_page_url = "/real-time/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -79,15 +79,8 @@
 <li>
           
             <li>
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Getting started</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#getting_started">Getting started</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../getting-started/">Getting started</a>
         
     </li>
 <li>
@@ -133,8 +126,17 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../real-time/">Real time metrics</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Real time metrics</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#real_time_data_on_active_user_sessions">Real time data on active user sessions</a></li>
+                
+                    <li><a class="toctree-l4" href="#active_users_data_as_mqtt_messages">Active users data as MQTT messages</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -198,8 +200,12 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Features &raquo;</li>
+        
+      
     
-    <li>Getting started</li>
+    <li>Real time metrics</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -213,12 +219,24 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="getting_started">Getting started<a class="headerlink" href="#getting_started" title="Permanent link">&para;</a></h1>
-<p>Sorry - there is no installer for Butler.<br />
-You will need to work a bit on the command line to set things up.  </p>
-<p>It's not as bad as it sounds though, a few pieces of software (most notably <a href="https://nodejs.org/en/">node.js</a> and some node modules) need to be installed, but the default options should be good to use, at least as of this writing.</p>
-<p>Follow the <a href="../install-config/">installation and configuration instructions</a> - they will guide through the setup process, including requirements and customisation.<br />
-Then browse through <a href="../sample-code/">the examples</a> to get an understanding of how to use Butler.</p>
+                <h1 id="real_time_data_on_active_user_sessions">Real time data on active user sessions<a class="headerlink" href="#real_time_data_on_active_user_sessions" title="Permanent link">&para;</a></h1>
+<p>Butler listens to session start/end messages from Sense's log4net logging framework, and keeps records of both how many and which users currently have active sessions.<br />
+Ideal would be if the Sense APIs would provide a list of currently active users, that us however currently not available. 
+For that reason Butler's tactic is to listen to log events to determine when users start and end sessions.   </p>
+<p>There is however a downside to this approach.<br />
+When Butler is first started, it will not know what sessions are currently active. Instead, it will collect that inforamation as time passes.<br />
+This means that the active user count, as well as what specific users are active, might be incorrect when Butler is first started. 
+The data will then become more and more exact as users end their sessions, and later restart them (Butler will then capture the session restart, and update its data structures accordingly).</p>
+<h2 id="active_users_data_as_mqtt_messages">Active users data as MQTT messages<a class="headerlink" href="#active_users_data_as_mqtt_messages" title="Permanent link">&para;</a></h2>
+<p>Butler publishes a set of MQTT messages relating to active sessions.<br />
+Whenever a session starts or ends, two MQT messages will be sent:  </p>
+<ul>
+<li>The new number for number of active user sessions is posted to the MQTT topic defined by the config entry Butler.mqttConfig.activeUserCountTopic</li>
+<li>A string array with usernames of all users with active sessions is posted to MQTT topic defined by Butler.mqttConfig.activeUsersTopic</li>
+</ul>
+<p>Making this data available as MQTT messages, it can then be used in real-time dashboards or for alerting purposes.<br />
+For example, using <a href="https://github.com/node-red/node-red-dashboard">Node-RED's dashboard module</a>, it is trivial to create a real-time updating dashboard like this one (showing data for the last few days):</p>
+<p><img alt="alt text" src="../img/active_user_sessions.png" title="Active user sessions" />  </p>
               
             </div>
           </div>
@@ -226,10 +244,10 @@ Then browse through <a href="../sample-code/">the examples</a> to get an underst
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../project-layout/" class="btn btn-neutral float-right" title="Project layout">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../mqtt/" class="btn btn-neutral float-right" title="MQTT integration">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../overview/" class="btn btn-neutral" title="Overview and features"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../log-events/" class="btn btn-neutral" title="Log event handlers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -257,10 +275,10 @@ Then browse through <a href="../sample-code/">the examples</a> to get an underst
           <a href="https://github.com/mountaindude/butler" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../overview/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../log-events/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../project-layout/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../mqtt/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

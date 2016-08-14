@@ -86,6 +86,9 @@
                 <li class="toctree-l3"><a href="#handler_for_sense_log_messages">Handler for Sense log messages</a></li>
                 
             
+                <li class="toctree-l3"><a href="#real_time_active_user_data">Real time active user data</a></li>
+                
+            
                 <li class="toctree-l3"><a href="#mqtt_handlers">MQTT handlers</a></li>
                 
             
@@ -146,12 +149,40 @@
         
             
     <li class="toctree-l1 ">
+        <a class="" href="../real-time/">Real time metrics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
         <a class="" href="../mqtt/">MQTT integration</a>
         
     </li>
 
         
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../udp-client/">UDP client</a>
+        
+    </li>
+
+        
     </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../sample-code/">Examples</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../security/">Security considerations</a>
+        
+    </li>
 <li>
           
             <li>
@@ -204,6 +235,7 @@ Some of the features can be used from Sense load scripts, while other provide in
 <ul>
 <li>REST endpoints that can be called from Sense load scripts or external systems.</li>
 <li>Event proxies used to forward messages from Sense's logging framework.</li>
+<li>In- and outbound MQTT messages for stable, reliable machine-to-machine communication and notifications</li>
 </ul>
 <h1 id="rest_endpoints">REST endpoints<a class="headerlink" href="#rest_endpoints" title="Permanent link">&para;</a></h1>
 <table>
@@ -257,8 +289,11 @@ Some of the features can be used from Sense load scripts, while other provide in
 </tbody>
 </table>
 <h1 id="handler_for_sense_log_messages">Handler for Sense log messages<a class="headerlink" href="#handler_for_sense_log_messages" title="Permanent link">&para;</a></h1>
-<p>It is possible to hook into Sense's logging framework, and have log events forwarded to Butler.<br />
-Once there, Butler can act as needed on the messages. Currently Butler forwards some messages to Slack (for notifying humans that some event occurred) and MQTT (for notifying other systems that some event occurred).</p>
+<p>It is possible to hook into Sense's logging framework, and have log events forwarded to Butler. Once there, Butler can act as needed on the messages.<br />
+Currently Butler forwards messages to Slack (for notifying humans that some event occurred) and MQTT (for notifying other systems that some event occurred).<br />
+More info <a href="../log-events">here</a>. </p>
+<h1 id="real_time_active_user_data">Real time active user data<a class="headerlink" href="#real_time_active_user_data" title="Permanent link">&para;</a></h1>
+<p>Butler keeps track of how many and which users are currently using Sense. This information is also published as MQTT messages.   </p>
 <h1 id="mqtt_handlers">MQTT handlers<a class="headerlink" href="#mqtt_handlers" title="Permanent link">&para;</a></h1>
 <p>MQTT is a light weight pub-sub protocol developed for efficient machine-to-machine message sending. The protocol was developed with embedded systems (IoT and other low CPU/memory systems) in mind, and there are client implementations available in many different languages/platforms. It is also a mature protocol that has proven its stability over many years.  </p>
 <p>Adding in- and out-bound MQTT support to Sense opens up a very interesting set of possibilities:   </p>

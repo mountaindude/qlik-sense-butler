@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>Examples - Butler documentation</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Examples";
+    var mkdocs_page_input_path = "sample-code.md";
+    var mkdocs_page_url = "/sample-code/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-58487795-2', 'mountaindude.github.io/butler');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Butler documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../overview/">Overview and features</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../getting-started/">Getting started</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../project-layout/">Project layout</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../install-config/">Installation and configuration</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../running/">Running Butler</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Features</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../rest/">REST API</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../log-events/">Log event handlers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../real-time/">Real time metrics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../mqtt/">MQTT integration</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../udp-client/">UDP client</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Examples</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#examples_on_how_to_use_butler">Examples on how to use Butler</a></li>
+                
+                    <li><a class="toctree-l4" href="#call_butler_rest_endpoints_from_within_sense_load_scripts">Call Butler REST endpoints from within Sense load scripts</a></li>
+                
+                    <li><a class="toctree-l4" href="#use_mqtt_to_start_sense_tasks">Use MQTT to start Sense tasks</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../security/">Security considerations</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../tools-used/">Tools used</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Butler documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Examples</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/mountaindude/butler" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="examples_on_how_to_use_butler">Examples on how to use Butler<a class="headerlink" href="#examples_on_how_to_use_butler" title="Permanent link">&para;</a></h1>
+<h2 id="call_butler_rest_endpoints_from_within_sense_load_scripts">Call Butler REST endpoints from within Sense load scripts<a class="headerlink" href="#call_butler_rest_endpoints_from_within_sense_load_scripts" title="Permanent link">&para;</a></h2>
+<p>While it is quite possible to call the Butler REST endpoints directly from a LOAD...FROM statement, it is usually more convenient to use the subroutine wrappers that are available as .qvs files in the sense_script folder in the Butler repository.</p>
+<p>Before doing any calls to Butler, we should initialize things. Failing to do so might lead to errors and unpredictable responses from the Butler APIs.    </p>
+<pre><code>$(Must_Include=[lib://Butler scripts/butler_init.qvs]);
+CALL ButlerInit;
+</code></pre>
+<p>Note:  </p>
+<ul>
+<li>We first include the subroutine from a .qvs file, then call it. The same concept is used throughout Butler when it comes to making use of Butler features from the Sense load script.</li>
+<li>The Butler qvs files are stored in a folder on the Sense server, which is linked to a data connection called "Butler scripts".  </li>
+</ul>
+<p>With this taken care of, we can call any other Butler API.</p>
+<h3 id="posting_to_slack">Posting to Slack<a class="headerlink" href="#posting_to_slack" title="Permanent link">&para;</a></h3>
+<pre><code>$(Must_Include=[lib://Butler scripts/butler_init.qvs]);
+$(Must_Include=[lib://Butler scripts/post_to_slack.qvs]);
+
+CALL ButlerInit;
+CALL PostToSlack('sense-reload-info', 'server: senseServer1', '*&lt;App name&gt;*: reload starting', ':ghost:');  // Post a starting message to Slack
+CALL PostToSlack('sense-reload-info', subfield(OSUser(),'UserId=',2) &amp; ' on server: ' &amp; ComputerName(), '*Reloaded by: ' &amp; subfield(OSUser(),'UserId=',2) &amp; '* &lt;App name&gt;: Reload starting', ':test:');
+</code></pre>
+<p>This will result in the following Slack entries:<br />
+<img alt="alt text" src="../img/post_to_slack_1.png" title="Posting to Slack" /><br />
+<img alt="alt text" src="../img/post_to_slack_2.png" title="Posting to Slack" />  </p>
+<h3 id="start_a_sense_task">Start a Sense task<a class="headerlink" href="#start_a_sense_task" title="Permanent link">&para;</a></h3>
+<pre><code>$(Must_Include=[lib://Butler scripts/butler_init.qvs]);
+$(Must_Include=[lib://Butler scripts/start_task.qvs]);
+
+CALL ButlerInit;
+CALL StartTask('abcd1234-5678-abcd-1234-abcd1234abcd');     // Parameter should be ID of the task that is to be started
+</code></pre>
+<h3 id="post_a_message_to_an_mqtt_topic">Post a message to an MQTT topic<a class="headerlink" href="#post_a_message_to_an_mqtt_topic" title="Permanent link">&para;</a></h3>
+<pre><code>$(Must_Include=[lib://Butler scripts/butler_init.qvs]);
+$(Must_Include=[lib://Butler scripts/post_to_slack.qvs]);
+
+CALL ButlerInit;
+CALL PostToMQTT('qliksense/myapp/reload_status', 'starting');   // Posting message "starting" to topic "qliksense/myapp/reload_status"
+</code></pre>
+<h3 id="create_a_directory_on_disk">Create a directory on disk<a class="headerlink" href="#create_a_directory_on_disk" title="Permanent link">&para;</a></h3>
+<pre><code>$(Must_Include=[lib://Butler scripts/butler_init.qvs]);
+$(Must_Include=[lib://Butler scripts/create_directory.qvs]);
+
+CALL ButlerInit;
+CALL CreateDir('d:/abc/def/ghi');       // Note that forward slashes work
+CALL CreateDir('d:\123\456\789');       // Backslashes work too
+</code></pre>
+<h3 id="list_all_sense_apps_on_the_server">List all Sense apps on the server<a class="headerlink" href="#list_all_sense_apps_on_the_server" title="Permanent link">&para;</a></h3>
+<pre><code>// "Sense list apps" is a data connection using Qlik's standard REST connector, connected 
+// to http://&lt;FQDN or IP of Butler server&gt;:8080/senseListApps
+// The Apps table will contain id and name of all apps on the server
+
+LIB CONNECT TO 'Sense list apps';
+
+RestConnectorMasterTable:
+SQL SELECT 
+    "id",
+    "name"
+FROM JSON (wrap on) "root";
+
+Apps:
+LOAD    
+    [id]    AS [App id],
+    [name]  AS [App name]
+RESIDENT RestConnectorMasterTable;
+
+DROP TABLE RestConnectorMasterTable;
+</code></pre>
+<h3 id="serialise_a_sense_app_to_json_and_a_sense_data_model">Serialise a Sense app to JSON and a Sense data model<a class="headerlink" href="#serialise_a_sense_app_to_json_and_a_sense_data_model" title="Permanent link">&para;</a></h3>
+<p>Create a data connection (for example called "Sense app extract") using Qlik's REST connector, against http://<FQDN or IP of Butler server>:8080/senseAppDump
+This will generate several thousands lines of code in the Sense script editor, modelling a Sense app's internal data model. 
+The Butler endpoint returns a JSON, which the REST connector then transforms into a Sense data model.
+To dynamically control which app is serialized you can use the "with connection" syntax.</p>
+<pre><code>LIB CONNECT TO 'Sense app extract';
+
+let vAppId = 'abcd1234-5678-abcd-1234-abcd1234abcd';
+
+RestConnectorMasterTable:
+SQL SELECT 
+"loadScript",
+...
+FROM JSON (wrap on) "root" PK "__KEY_root"
+WITH CONNECTION (
+QUERY "guid" "$(vAppId)");
+...
+</code></pre>
+<p>Here is what the Sense data model looks like for a Sense 2.2.4 app:</p>
+<p><img alt="alt text" src="../img/data_model_of_a_qlik_sense_app.png" title="Qlik Sense app data model" />  </p>
+<h3 id="get_free_disk_space">Get free disk space<a class="headerlink" href="#get_free_disk_space" title="Permanent link">&para;</a></h3>
+<p>Create a data connection (for example "Free disk space") using the REST connector, against http://<FQDN or IP of Butler server>:8080/getDiskSpace<br />
+Use the "with connection..." syntax to specify in the script which drive/path to check available disk space for.</p>
+<p>By using this connector, it is easy to create a basic disk status check in load scripts. 
+If disk space is running low, a message could be posted to a Slack channel, pinging a system administrator etc.</p>
+<pre><code>let vPath='d:\';
+
+LIB CONNECT TO 'Free disk space';
+
+RestConnectorMasterTable:
+SQL SELECT 
+    "path",
+    "available",
+    "free",
+    "total"
+FROM JSON (wrap on) "root"
+    WITH CONNECTION (
+    QUERY "path" "$(vPath)")
+;
+
+FreeDiskSpace:
+LOAD    
+    path,
+    available,
+    free,
+    [total]
+RESIDENT RestConnectorMasterTable;
+
+DROP TABLE RestConnectorMasterTable;
+</code></pre>
+<h2 id="use_mqtt_to_start_sense_tasks">Use MQTT to start Sense tasks<a class="headerlink" href="#use_mqtt_to_start_sense_tasks" title="Permanent link">&para;</a></h2>
+<p>Butler is configured to listen to a specific MQTT topic, qliksense/start_task, and use any message received in that topic as a Sense task ID, which is then started. </p>
+<p>For example:  </p>
+<ul>
+<li>A Sense app, used by end users, relies on data in a MS SQL Server database.   </li>
+<li>The data in the datbase can be updated at any time. </li>
+</ul>
+<p>In order to update the Sense app with data, the most common approach is to schedule reloads of the app at certain intervals, i.e. polling the database.<br />
+But if the database instead posts a MQTT message on the qliksense/start_task topic when new data is available, the database will trigger the Sense app's reload.</p>
+<p>This way the Sense app will be updated as quickly as possible after new data is availabe in the database.<br />
+<em>I.e. the end user will have access to more up-to-date data, compared to the polling based solution.</em></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../security/" class="btn btn-neutral float-right" title="Security considerations">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../udp-client/" class="btn btn-neutral" title="UDP client"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/mountaindude/butler" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../udp-client/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../security/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

@@ -98,12 +98,23 @@
         
             <ul>
             
+                <li class="toctree-l3"><a href="#requirements">Requirements</a></li>
+                
+                    <li><a class="toctree-l4" href="#windows_or_osx">Windows or OSX</a></li>
+                
+            
                 <li class="toctree-l3"><a href="#installation">Installation</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#security_considerations">Security considerations</a></li>
                 
             
                 <li class="toctree-l3"><a href="#configuration">Configuration</a></li>
                 
                     <li><a class="toctree-l4" href="#config_file_syntax">Config file syntax</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#customisation">Customisation</a></li>
                 
             
             </ul>
@@ -139,12 +150,40 @@
         
             
     <li class="toctree-l1 ">
+        <a class="" href="../real-time/">Real time metrics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
         <a class="" href="../mqtt/">MQTT integration</a>
         
     </li>
 
         
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../udp-client/">UDP client</a>
+        
+    </li>
+
+        
     </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../sample-code/">Examples</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../security/">Security considerations</a>
+        
+    </li>
 <li>
           
             <li>
@@ -190,7 +229,36 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h1>
+                <h1 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h1>
+<p>Butler depends on various pieces of software. Some are required, others are optional, as described below.</p>
+<table>
+<thead>
+<tr>
+<th>What</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sense Enterprise</td>
+<td>Butler is developed with Sense Enterprise in mind. While many Butler features might also work with Sense Desktop, you are on your own there.</td>
+</tr>
+<tr>
+<td>MQTT broker</td>
+<td>MQTT is used for both in- and out-bound pub-sub messaging. Butler assumes a working MQTT broker is available, the IP of which is defined in the Butler config file. Mosquitto is a nice open source broker. It requires very little hardware to run, even the smallest (free!) Amazon EC2 instance is enough, if you want a dedicated MQTT server. If you don't care about the pubsub features of Butler, you obviously don't need a MQTT broker.</td>
+</tr>
+<tr>
+<td>node.js</td>
+<td>Butler is written in Node - which is thus a firm requirement.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="windows_or_osx">Windows or OSX<a class="headerlink" href="#windows_or_osx" title="Permanent link">&para;</a></h2>
+<p>While Sense is a Windows only system, Butler should be able to run on any OS where node.js is available.<br />
+Butler has been succesfully used on Windows and OSX, but some features (e.g. getting free disk space info) are relative to the server where Butler is running. 
+For that reason Butler should in most cases be running on one of the Windows servers in the Sense cluster.</p>
+<p>For development purposes OSX however works very well.</p>
+<h1 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h1>
 <p>Below are the general steps needed to install Butler. Please note that you might need to adapt these to your particular system configuration.   </p>
 <ul>
 <li>
@@ -221,13 +289,27 @@ npm install
   MkDocs is used to create the pages you are reading right now.</p>
 </li>
 </ul>
+<h1 id="security_considerations">Security considerations<a class="headerlink" href="#security_considerations" title="Permanent link">&para;</a></h1>
+<ul>
+<li>
+<p>You should make sure to configure the firewall of the server where Buter is running, so it only accepts connections from the desired clients/IP addresses.
+A reasonable first approach would be to configure the firewall to only allow calls from localhost. That way calls to Butler can only be made from the server where Butler itself is running.</p>
+</li>
+<li>
+<p>As of right now the MQTT connections are not secured by certificates or passwords.
+For use within a controlled network that might be fine, but nonetheless something to keep in mind. Adding certificate based authentication (which MQTT supports) would solve this.</p>
+</li>
+</ul>
 <h1 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h1>
 <p>Butler uses configuration files in JSON format. The config files are stored in the src\config folder.<br />
 Butler comes with a default config file called <code>default.json</code>. Either update it as needed (see below for details), or make a copy of it and call it <code>production.json</code>, then make the needed changes to that file. That way you will not overwrite your customized <code>default.json</code> file if you in the future download updated Butler versions from GitHub.  </p>
-<p>Note: Butler uses the <a href="https://github.com/lorenwest/node-config">node-config</a> module to handle config files. As per node-config's documentation, to switch to using the production.json config file, at a command prompt type</p>
+<p>Note: Butler uses the <a href="https://github.com/lorenwest/node-config">node-config</a> module to handle config files. As per node-config's documentation, to switch to using the production.json config file, at a command prompt type (for Windows)</p>
 <pre><code>set NODE_ENV=production
 </code></pre>
-<p>before starting Butler with <code>node butler.js</code>.</p>
+<p>before starting Butler with <code>node butler.js</code>.<br />
+  If developing on OSX or Linux, instead use  </p>
+<pre><code>export NODE_ENV=production
+</code></pre>
 <h2 id="config_file_syntax">Config file syntax<a class="headerlink" href="#config_file_syntax" title="Permanent link">&para;</a></h2>
 <p>The <code>default.json</code> config file looks like this:</p>
 <pre><code class="json">{
@@ -245,7 +327,9 @@ Butler comes with a default config file called <code>default.json</code>. Either
       &quot;sessionStopTopic&quot;: &quot;qliksense/session/stop&quot;,
       &quot;connectionOpenTopic&quot;: &quot;qliksense/connection/open&quot;,
       &quot;connectionCloseTopic&quot;: &quot;qliksense/connection/close&quot;,
-      &quot;taskFailureServerStatusTopic&quot;: &quot;qliksense/butler/session_server&quot;
+      &quot;taskFailureServerStatusTopic&quot;: &quot;qliksense/butler/session_server&quot;,
+      &quot;activeUserCountTopic&quot;: &quot;qliksense/users/active/count&quot;,
+      &quot;activeUsersTopic&quot;: &quot;qliksense/users/active/usernames&quot;
     },
     &quot;udpServerConfig&quot;: {
       &quot;serverIP&quot;: &quot;&lt;IP of server where Butler is running&gt;&quot;,
@@ -281,6 +365,10 @@ Future versions may make MQTT, Slack and other similar channels optional, using 
 The files to use are <code>client.pem</code> and <code>client_key.pem</code>. The config file can point straight to these files.  </p>
 </li>
 </ul>
+<h1 id="customisation">Customisation<a class="headerlink" href="#customisation" title="Permanent link">&para;</a></h1>
+<p>As Butler offers a rather diverse set of features, everyone might not need all features. There is no single config file in which individual features can be turned on/off, 
+but given the structure of the Butler source code it is relatively easy to disable speciifc features, or add new ones.<br />
+For example, to disable a particular REST API endpoint, you could just remove the registration of that endpoint from within the src/butler.js file.</p>
               
             </div>
           </div>

@@ -4,7 +4,7 @@
     
     <url>
      <loc>https://mountaindude.github.io/butler//</loc>
-     <lastmod>2016-06-27</lastmod>
+     <lastmod>2016-08-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,7 +12,7 @@
     
     <url>
      <loc>https://mountaindude.github.io/butler//overview/</loc>
-     <lastmod>2016-06-27</lastmod>
+     <lastmod>2016-08-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -20,7 +20,7 @@
     
     <url>
      <loc>https://mountaindude.github.io/butler//getting-started/</loc>
-     <lastmod>2016-06-27</lastmod>
+     <lastmod>2016-08-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -28,7 +28,7 @@
     
     <url>
      <loc>https://mountaindude.github.io/butler//project-layout/</loc>
-     <lastmod>2016-06-27</lastmod>
+     <lastmod>2016-08-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -36,7 +36,7 @@
     
     <url>
      <loc>https://mountaindude.github.io/butler//install-config/</loc>
-     <lastmod>2016-06-27</lastmod>
+     <lastmod>2016-08-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -44,7 +44,7 @@
     
     <url>
      <loc>https://mountaindude.github.io/butler//running/</loc>
-     <lastmod>2016-06-27</lastmod>
+     <lastmod>2016-08-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -53,19 +53,31 @@
         
     <url>
      <loc>https://mountaindude.github.io/butler//rest/</loc>
-     <lastmod>2016-06-27</lastmod>
+     <lastmod>2016-08-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://mountaindude.github.io/butler//log-events/</loc>
-     <lastmod>2016-06-27</lastmod>
+     <lastmod>2016-08-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://mountaindude.github.io/butler//real-time/</loc>
+     <lastmod>2016-08-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://mountaindude.github.io/butler//mqtt/</loc>
-     <lastmod>2016-06-27</lastmod>
+     <lastmod>2016-08-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://mountaindude.github.io/butler//udp-client/</loc>
+     <lastmod>2016-08-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -73,8 +85,24 @@
 
     
     <url>
+     <loc>https://mountaindude.github.io/butler//sample-code/</loc>
+     <lastmod>2016-08-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>https://mountaindude.github.io/butler//security/</loc>
+     <lastmod>2016-08-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
      <loc>https://mountaindude.github.io/butler//tools-used/</loc>
-     <lastmod>2016-06-27</lastmod>
+     <lastmod>2016-08-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
     

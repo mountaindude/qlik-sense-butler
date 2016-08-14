@@ -126,17 +126,52 @@
 
         
             
+    <li class="toctree-l1 ">
+        <a class="" href="../real-time/">Real time metrics</a>
+        
+    </li>
+
+        
+            
     <li class="toctree-l1 current">
         <a class="current" href="./">MQTT integration</a>
         
             <ul>
+            
+                <li class="toctree-l3"><a href="#mqtt">MQTT</a></li>
+                
+                    <li><a class="toctree-l4" href="#outgoing_mqtt_-_publish">Outgoing MQTT - publish</a></li>
+                
+                    <li><a class="toctree-l4" href="#incoming_mqtt_-_subscribe">Incoming MQTT - subscribe</a></li>
+                
             
             </ul>
         
     </li>
 
         
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../udp-client/">UDP client</a>
+        
+    </li>
+
+        
     </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../sample-code/">Examples</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../security/">Security considerations</a>
+        
+    </li>
 <li>
           
             <li>
@@ -186,7 +221,28 @@
           <div role="main">
             <div class="section">
               
-                
+                <h1 id="mqtt">MQTT<a class="headerlink" href="#mqtt" title="Permanent link">&para;</a></h1>
+<p><a href="http://mqtt.org">MQTT</a> is a light weight publish-subscribe ("pub-sub") protocol.<br />
+Popular in use in Internet of Things applications, there are client libraries available for many different languages and platforms. This is important, as there is a good chance other systems can find a way of sending MQTT messages, which Butler can then listen for/subscribe to.</p>
+<h2 id="outgoing_mqtt_-_publish">Outgoing MQTT - publish<a class="headerlink" href="#outgoing_mqtt_-_publish" title="Permanent link">&para;</a></h2>
+<p>Butler can post messages to MQTT topics. The <code>/mqqtPublishMessage</code> is used to achieve this.<br />
+This way Butler can send status information and notifications to other systems, outside of Qlik Sense. Use cases include: </p>
+<ul>
+<li>Notify downstream systems that Sense has finished creating some data set that the downstream system is depending on.</li>
+<li>Send debug or trace messages to MQTT instead of to the Sense log. Using a MQTT client (there are multiple ones on both Windows, OSX and Linux) you can the monitor the messages in real time. Very useful during development of tricky Sense load scripts!</li>
+<li>Start Sense tasks (typically reloads) from the Sense load script. Very useful when you need to trigger a second app reload once the first app's load script reaches some specific point of execution.<br />
+This way the scheduling and execution of Sense tasks can be made much more flexible than using the built in QMC scheduler.</li>
+<li>Send messages to platforms such as Node-RED. Node-RED is an open source platform (with a graphical editor) intended for integrating different systems and data sources. As it is built on node.red there are many different modules available, offering integrations with all sorts of systems and protocols.<br />
+Using Node.RED together with Qlik Sense and Butler, it is possible to interface with social media from the Sense load script (send a Tweet when some condition occur during app reload, for example).</li>
+</ul>
+<h2 id="incoming_mqtt_-_subscribe">Incoming MQTT - subscribe<a class="headerlink" href="#incoming_mqtt_-_subscribe" title="Permanent link">&para;</a></h2>
+<p>Butler listens to all MQTT messages in the qliksense/# topic tree. Which in MQTT lingo means "listen to all messages in the qliksense topic, as well as in any subtopics".<br />
+When Butler finds such a message, it is analysed and if the topic matches any of the predefined topics with special meaning, the associated tasks are carried out.  </p>
+<p>Topics with special meaning are:</p>
+<ul>
+<li><code>qliksense/start_task</code>: Starts the Sense task identified by the ID sent in the message body. See the <a href="../sample-code/#use_mqtt_to_start_sense_tasks">Examples</a> secion.</li>
+</ul>
+<p>As Butler listens to all messages in qliksense/#, it can easily be extended with handlers for additional topics.</p>
               
             </div>
           </div>
@@ -194,10 +250,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../tools-used/" class="btn btn-neutral float-right" title="Tools used">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../udp-client/" class="btn btn-neutral float-right" title="UDP client">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../log-events/" class="btn btn-neutral" title="Log event handlers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../real-time/" class="btn btn-neutral" title="Real time metrics"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -225,10 +281,10 @@
           <a href="https://github.com/mountaindude/butler" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../log-events/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../real-time/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../tools-used/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../udp-client/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

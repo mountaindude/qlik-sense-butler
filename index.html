@@ -221,7 +221,7 @@
               
                 <h1 id="welcome_to_the_butler_documentation">Welcome to the Butler documentation<a class="headerlink" href="#welcome_to_the_butler_documentation" title="Permanent link">&para;</a></h1>
 <p>Butler is an open source add-on tool for Qlik Sense, extending that platform with various features, most of which are focused on integrating Sense with other systems. <br />
-Butler makes it very easy to hook up Sense to systems like <a href="https://slack.com/">Slack</a> or <a href="http://mqtt.org/">MQTT</a>, and use these tools to send alerts when something important/interesting/urgent happen in a Sense cluster.  </p>
+Butler makes it easy to hook up Sense to systems like <a href="https://slack.com/">Slack</a> or <a href="http://mqtt.org/">MQTT</a>, and use these tools to send alerts when something important/interesting/urgent happen in a Sense cluster.  </p>
 <p>Sample use cases:  </p>
 <ul>
 <li>Information about all failing tasks can be sent to a Slack channel. This gives sysadmins real-time insight into what's happening with respect to task execution.</li>
@@ -230,8 +230,11 @@ Butler makes it very easy to hook up Sense to systems like <a href="https://slac
 new message. Can for example be used to notify user(s) that an app has reloaded with new data, or that some error condition has occured. </li>
 <li>Send and receive MQTT publish-subscribe messages. MQTT (and the pubsub concept in general) is a great way for systems to communicate reliably with each other.</li>
 <li>Modify the Operations Monitor app to send a daily summary of daily/weekly/monthly active users, # of failed tasks etc to a Slack channel</li>
-<li>... Butler is open and extensibleby its nature, it is thus possible to integrate it with most other systems.</li>
+<li>... Butler is open and extensibleby in its nature, it is thus possible to integrate it with most other systems.</li>
+<li>Real-time monitoring of active users. This data is posted to MQTT, from where it can be plotted by various tools, see below.</li>
 </ul>
+<p><img alt="alt text" src="./img/active_user_sessions.png" title="Active user sessions" /><br />
+Real-time view of # of active users.</p>
 <p>All project files are found <a href="https://github.com/mountaindude/butler">on GitHub</a>.</p>
 <p>Use the menu to the left to access the different parts of the Butler documentation.</p>
 <p>Throughout this documentation the words "Qlik Sense" and "Sense" are used, both referring to the product Qlik Sense from the company Qlik.</p>
@@ -295,5 +298,5 @@ Released under the MIT license.</p>
 
 <!--
 MkDocs version : 0.15.3
-Build Date UTC : 2016-08-14 08:19:19.658100
+Build Date UTC : 2016-08-28 21:39:51.233104
 -->

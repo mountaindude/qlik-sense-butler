@@ -114,6 +114,9 @@
                     <li><a class="toctree-l4" href="#config_file_syntax">Config file syntax</a></li>
                 
             
+                <li class="toctree-l3"><a href="#log4net_extender_config_files">log4net extender config files</a></li>
+                
+            
                 <li class="toctree-l3"><a href="#customisation">Customisation</a></li>
                 
             
@@ -251,6 +254,14 @@
 <td>node.js</td>
 <td>Butler is written in Node - which is thus a firm requirement.</td>
 </tr>
+<tr>
+<td>Visual Studo</td>
+<td>When Butler is running on Windows, the free disk space feature of Butler requires some tools from Visual Studio to be installed during Butler installation.</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>When Butler is running on Windows, the free disk space feature of Butler requires Python to be installed during Butler installation.</td>
+</tr>
 </tbody>
 </table>
 <h2 id="windows_or_osx">Windows or OSX<a class="headerlink" href="#windows_or_osx" title="Permanent link">&para;</a></h2>
@@ -269,6 +280,30 @@ For that reason Butler should in most cases be running on one of the Windows ser
 <p><strong>Decide where to install Butler</strong><br />
   It is usually a good starting point to run Butler on the Sense server. If there are more than one server in the Sense cluster, Butler can be placed on the reload server (as the /createDir endpoint then can be used to create folders in which QVD and other files can be stored).
   That said, it is quite possible to run Butler on any server, as long as there is network connectivity to the Sense server(s).  </p>
+</li>
+<li>
+<p><strong> Windows dependencies: Visual Studio and Python</strong><br />
+The following npm modules need to be rebuilt when installing Butler (i.e. when doing "npm install", see below):</p>
+<ul>
+<li><em>Diskusage</em>    </li>
+</ul>
+<p>
+
+<p>It is fairly easy to adapt the Butler source code to remove the getDiskSpace REST endpoint, if it is not needed.<br />
+Otherwise the following software also need to be installed on the server where Butler will be running:  </p>
+<ul>
+<li>
+<p><em>Visual Studio 2015 Community Edition</em> <br />
+This is a rather large software package, but it is free from Microsoft. The full IDE version is needed, the command line tools don't seem to include all the tools needed to build some of the npm modules.<br />
+Make a custom install and make sure to install the C++ components.</p>
+</li>
+<li>
+<p><em>Python</em><br />
+A standard installation of Python for Windows is enough. Python 2.7.12 has been tested - your milage may vary if using other versions.
+<p></p>
+</li>
+</ul>
+<p>It is obviously not ideal having such big dependencies, maybe it is possible to address this in future Butler versions.    </p>
 </li>
 <li>
 <p><strong>Download Butler</strong><br />
@@ -297,12 +332,18 @@ A reasonable first approach would be to configure the firewall to only allow cal
 </li>
 <li>
 <p>As of right now the MQTT connections are not secured by certificates or passwords.
-For use within a controlled network that might be fine, but nonetheless something to keep in mind. Adding certificate based authentication (which MQTT supports) would solve this.</p>
+For use within a controlled network that might be fine, but nonetheless something to keep in mind. Adding certificate based authentication (which MQTT supports) would solve this.  </p>
+</li>
+<li>
+<p>Butler uses various node.js modules from <a href="https://www.npmjs.com/">npm</a>. If conserned about security, you should review these dependencies and decide whether there are issues in them or not.<br />
+Same thing with Butler itself - while efforts have been made to make Butler secure, you need to decide for yourself whether the level of security is enough for your use case.  </p>
+<p>Butler is from time to time (not continuously as this point) checked for security vulnerabilities by using <a href="https://nodesecurity.io/opensource">NPS</a>, as of Butler 2.0 no security issues are reported by NPS.</p>
 </li>
 </ul>
 <h1 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h1>
 <p>Butler uses configuration files in JSON format. The config files are stored in the src\config folder.<br />
-Butler comes with a default config file called <code>default.json</code>. Either update it as needed (see below for details), or make a copy of it and call it <code>production.json</code>, then make the needed changes to that file. That way you will not overwrite your customized <code>default.json</code> file if you in the future download updated Butler versions from GitHub.  </p>
+Butler comes with a default config file called <code>default.json</code>. Either update it as needed (see below for details), or make a copy of it and call it <code>production.json</code>, then make the needed changes to that file. That way you will not overwrite your customized <code>default.json</code> file if you in the future download updated Butler versions from GitHub. <br />
+Trying to run Butler with the default config file (the one included in the files download from GitHub) will not work - you need to adapt it to your server environment.</p>
 <p>Note: Butler uses the <a href="https://github.com/lorenwest/node-config">node-config</a> module to handle config files. As per node-config's documentation, to switch to using the production.json config file, at a command prompt type (for Windows)</p>
 <pre><code>set NODE_ENV=production
 </code></pre>
@@ -310,6 +351,7 @@ Butler comes with a default config file called <code>default.json</code>. Either
   If developing on OSX or Linux, instead use  </p>
 <pre><code>export NODE_ENV=production
 </code></pre>
+<p>You may want to set that variable during server boot, to ensure Butler starts properly when the server is rebooted.</p>
 <h2 id="config_file_syntax">Config file syntax<a class="headerlink" href="#config_file_syntax" title="Permanent link">&para;</a></h2>
 <p>The <code>default.json</code> config file looks like this:</p>
 <pre><code class="json">{
@@ -363,6 +405,22 @@ Future versions may make MQTT, Slack and other similar channels optional, using 
 <li>
 <p>The default location cert/key files are found in (assuming a standard install of Sense 2.2.4) C:\ProgramData\Qlik\Sense\Repository\Exported Certificates.Local Certificates<br />
 The files to use are <code>client.pem</code> and <code>client_key.pem</code>. The config file can point straight to these files.  </p>
+</li>
+</ul>
+<h1 id="log4net_extender_config_files">log4net extender config files<a class="headerlink" href="#log4net_extender_config_files" title="Permanent link">&para;</a></h1>
+<p>Butler includes a couple of xml files that when deployed to the Sense server will create real-time UDP messages for certain events (tasks failing, user sessions starting/ending etc).<br />
+These xml files should be deployed as follows:  </p>
+<ul>
+<li>Task failure events  <ul>
+<li>XML file found in log4net_task-failed/LocalLogConfig.xml. This file includes settings to both send an email, and a UDP message when a task fails.</li>
+<li>XML file should be deployed to the server where reloads are done, in the C:\ProgramData\Qlik\Sense\Scheduler directory</li>
+</ul>
+</li>
+<li>User audit events<ul>
+<li>XML file found in log4net_user-audit-event/LocalLogConfig.xml</li>
+<li>XML file should be deployed on the server where the proxy is running, in the C:\ProgramData\Qlik\Sense\Proxy directory</li>
+<li>If there multiple proxies on different servers, it might make sense deploying the xml file on all of them, to capture all user audit events.</li>
+</ul>
 </li>
 </ul>
 <h1 id="customisation">Customisation<a class="headerlink" href="#customisation" title="Permanent link">&para;</a></h1>

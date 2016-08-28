@@ -219,18 +219,19 @@
 <p>Below follows a (most likely non complete) list of tools that were used to create Butler.<br />
 It is intended to serve as a reminder to self for how to carry out various tasks, some of which may only be occasionally used.
 Thus, please treat this page for what it is...</p>
+<p>On a high level, Butler development is done on OSX, using <a href="https://code.visualstudio.com/">Visual Studio Code</a>.<br />
+<a href="http://www.mkdocs.org/">MkDocs</a> is used to generate the documentation, which together with all files is hosted on GitHub.  </p>
 <ul>
 <li>Syntax checking and linting: <a href="http://eslint.org/">ESLint</a></li>
-<li>Linter for Atom editor: <a href="https://github.com/steelbrain/linter">Linter</a></li>
-<li>Seamless integration of ESLine into Atom, via Linter: <a href="https://atom.io/packages/linter-eslint">Linter-ESLint</a>   </li>
+<li>ESLint for Visual Studio Code: <a href="https://code.visualstudio.com/docs/languages/javascript">ESLint for VSC</a></li>
 <li>Config files in node.js: <a href="https://github.com/lorenwest/node-config">node-config</a></li>
 <li>Command line parameter parsing in node.js: <a href="https://github.com/yargs/yargs">yargs</a></li>
 <li>MkDocs for creating doc site: <a href="http://www.mkdocs.org/">MkDocs</a></li>
 <li>GitHub Pages (github.io) for hosting docs. Pushing docs to github.io: <code>mkdocs gh-deploy --clean</code></li>
-<li><a href="https://www.npmjs.com/package/node-windows">node-windows</a> for auto-starting Butler after server reboot.</li>
+<li><a href="https://www.npmjs.com/package/node-windows">node-windows</a> for auto-starting Butler after server reboot.<br />
+  Autostarting node apps on Windows is tricky... node-windows makes it relatively easy though.</li>
 </ul>
 <h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h2>
-<h3 id="mkdocs">MkDocs<a class="headerlink" href="#mkdocs" title="Permanent link">&para;</a></h3>
 <p>The main documentation is built using <a href="http://www.mkdocs.org/">MkDocs</a>.
 From within the butler-docs folder, run <code>mkdocs build --clean</code> to generate the static documentation files in the site folder.
 Or run <code>mkdocs serve</code>, then go to <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a> to view a live version of the documentation as you edit (and save) it.</p>

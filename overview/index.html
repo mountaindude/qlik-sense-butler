@@ -247,43 +247,47 @@ Some of the features can be used from Sense load scripts, while other provide in
 </thead>
 <tbody>
 <tr>
-<td><code>/butlerPing</code></td>
-<td>Desc</td>
+<td><code>/v2/activeUserCount</code></td>
+<td># of users with open Sense sessions</td>
 </tr>
 <tr>
-<td><code>/createDir</code></td>
+<td><code>/v2/activeUsers</code></td>
+<td>Usernames of users with open Sense sessions</td>
+</tr>
+<tr>
+<td><code>/v2/butlerPing</code></td>
+<td>Checks if Butler is running</td>
+</tr>
+<tr>
+<td><code>/v2/createDir</code></td>
 <td>Create directories (anywhere in the file system) on the server where Butler is running</td>
 </tr>
 <tr>
-<td><code>/createDirQVD</code></td>
+<td><code>/v2/createDirQVD</code></td>
 <td>Create directories (relative to a hard coded path) on the server where Butler is running</td>
 </tr>
 <tr>
-<td><code>/getDiskSpace</code></td>
+<td><code>/v2/getDiskSpace</code></td>
 <td>Check available disk space</td>
 </tr>
 <tr>
-<td><code>/mqttPublishMessage</code></td>
+<td><code>/v2/mqttPublishMessage</code></td>
 <td>Publish message to MQTT topic</td>
 </tr>
 <tr>
-<td><code>/senseAppDump</code></td>
-<td>...</td>
+<td><code>/v2/senseAppDump</code></td>
+<td>Retrieves metadata (load script etc) about a Sense app</td>
 </tr>
 <tr>
-<td><code>/senseListApps</code></td>
-<td>...</td>
+<td><code>/v2/senseListApps</code></td>
+<td>List name and GUID of all Sense apps in the system</td>
 </tr>
 <tr>
-<td><code>/senseQRSPing</code></td>
-<td>...</td>
+<td><code>/v2/senseStartTask</code></td>
+<td>Start a Sense task. Can for example be used by upstream data providers to trigger reloads of Sense apps</td>
 </tr>
 <tr>
-<td><code>/senseStartTask</code></td>
-<td>...</td>
-</tr>
-<tr>
-<td><code>/slackPostMessage</code></td>
+<td><code>/v2/slackPostMessage</code></td>
 <td>Post to Slack from Sense load scripts</td>
 </tr>
 </tbody>

@@ -257,71 +257,71 @@ This allows Butler to support multiple versions, and old versions to be (possibl
 <h3 id="v2activeusercount">/v2/activeUserCount<a class="headerlink" href="#v2activeusercount" title="Permanent link">&para;</a></h3>
 <pre><code>  Purpose    : Get number of users that have active sessions. This value is based on session start/stop events, which means that there are corner cases where the incorrect value will be shown - for example just after starting Butler.  
   Parameters : -
-  Example    : curl http://&lt;FQDN or IP of Butler&gt;:8080/activeUserCount
+  Example    : curl http://&lt;FQDN or IP of Butler&gt;:8080/v2/activeUserCount
   Returns    : 5
 </code></pre>
 <h3 id="v2activeusers">/v2/activeUsers<a class="headerlink" href="#v2activeusers" title="Permanent link">&para;</a></h3>
 <pre><code>  Purpose    : Get an arrary with the usernames of users that currently have active sessions. This endpoint suffers from same limitation as the activeUserCount endpoint, i.e. it will not capture sessions that are active when Butler is started.  
   Parameters : -
-  Example    : curl http://&lt;FQDN or IP of Butler&gt;:8080/activeUsers
+  Example    : curl http://&lt;FQDN or IP of Butler&gt;:8080/v2/activeUsers
   Returns    : ["userA","userB","userC"]
 </code></pre>
 <h3 id="v2butlerping">/v2/butlerPing<a class="headerlink" href="#v2butlerping" title="Permanent link">&para;</a></h3>
 <pre><code>  Purpose    : Ask Butler if it is running and all is ok.
   Parameters : -
-  Example    : curl http://&lt;FQDN or IP of Butler&gt;:8080/butlerPing
+  Example    : curl http://&lt;FQDN or IP of Butler&gt;:8080/v2/butlerPing
   Returns    : {"response":"Butler reporting for duty"}
 </code></pre>
 <h3 id="v2createdir">/v2/createDir<a class="headerlink" href="#v2createdir" title="Permanent link">&para;</a></h3>
 <pre><code>  Purpose    : Create a directory in any place (where the account Butler is running under has write access) on the server.  
                Intermediate directories will be created too, i.e. if creating d:\abc\def when d:\abc does net yet exist, it will also be created.
   Parameters : directory
-  Example    : curl http://&lt;FQDN or IP of Butler&gt;:8080/createDir?directory=d:/abc/def
+  Example    : curl http://&lt;FQDN or IP of Butler&gt;:8080/v2/createDir?directory=d:/abc/def
   Returns    : {"directory":"d:/abc/def"}
 </code></pre>
 <h3 id="v2createdirqvd">/v2/createDirQVD<a class="headerlink" href="#v2createdirqvd" title="Permanent link">&para;</a></h3>
 <pre><code>  Purpose    : Create a directory relative to a predefined path. Can be used to ensure all QVDs are stored in a well defined location.
                Intermediate directories will be created too, i.e. if creating d:\abc\def when d:\abc does net yet exist, it will also be created.
   Parameters : directory
-  Example    : curl http://&lt;FQDN or IP of Butler&gt;:8080/createDirQVD?directory=abc/def
+  Example    : curl http://&lt;FQDN or IP of Butler&gt;:8080/v2/createDirQVD?directory=abc/def
   Returns    : {"directory":"abc/def"}
 </code></pre>
 <h3 id="v2getdiskspace">/v2/getDiskSpace<a class="headerlink" href="#v2getdiskspace" title="Permanent link">&para;</a></h3>
 <pre><code>  Purpose    : Get free space information for all disks connected to the server where Butler is running.
   Parameters : path
-  Returns    : curl http://&lt;FQDN or IP of Butler&gt;:8080/getDiskSpace?path=z:/
+  Returns    : curl http://&lt;FQDN or IP of Butler&gt;:8080/v2/getDiskSpace?path=z:/
   Example    : {"path":"z:/","available":&lt;number&gt;,"free":&lt;number&gt;,"total":&lt;number&gt;}
 </code></pre>
-<h3 id="v2mqqtpublishmessage">/v2/mqqtPublishMessage<a class="headerlink" href="#v2mqqtpublishmessage" title="Permanent link">&para;</a></h3>
+<h3 id="v2mqttpublishmessage">/v2/mqttPublishMessage<a class="headerlink" href="#v2mqttpublishmessage" title="Permanent link">&para;</a></h3>
 <pre><code>  Purpose    : Publish a message to a MQTT topic, using a MQTT broker defined in the Butler config file
   Parameters : topic, message
-  Example    : curl "http://&lt;FQDN or IP of Butler&gt;:8080/mqttPublishMessage?topic=abc/def&amp;message=ButlerTalksMQTT"
-               curl -G "http://&lt;FQDN or IP of Butler&gt;:8080/mqttPublishMessage" --data-urlencode "topic=abc/def" --data-urlencode "message=Butler talks MQTT"
+  Example    : curl "http://&lt;FQDN or IP of Butler&gt;:8080/v2/mqttPublishMessage?topic=abc/def&amp;message=ButlerTalksMQTT"
+               curl -G "http://&lt;FQDN or IP of Butler&gt;:8080/v2/mqttPublishMessage" --data-urlencode "topic=abc/def" --data-urlencode "message=Butler talks MQTT"
   Returns    : {"topic":"abc/def","message":"ButlerTalksMQTT"}
                {"topic":"abc/def","message":"Butler talks MQTT"}
 </code></pre>
 <h3 id="v2senseappdump">/v2/senseAppDump<a class="headerlink" href="#v2senseappdump" title="Permanent link">&para;</a></h3>
 <pre><code>  Purpose    : Extracts metadata about a Sense app.
   Parameters : appId
-  Example    : curl http://&lt;FQDN or IP of Butler&gt;:8080/senseAppDump?appId=98765e52-abcd-1234-5678-5678203b23b3
+  Example    : curl http://&lt;FQDN or IP of Butler&gt;:8080/v2/senseAppDump?appId=98765e52-abcd-1234-5678-5678203b23b3
   Returns    : A long, long JSON string.
 </code></pre>
 <h3 id="v2senselistapps">/v2/senseListApps<a class="headerlink" href="#v2senselistapps" title="Permanent link">&para;</a></h3>
 <pre><code>  Purpose    : List name and GUID of all apps in the Sense cluster where Butler is installed.
   Parameters : -
-  Example    : curl http://&lt;FQDN or IP of Butler&gt;:8080/senseListApps
+  Example    : curl http://&lt;FQDN or IP of Butler&gt;:8080/v2/senseListApps
   Returns    : A long, long JSON string.
 </code></pre>
 <h3 id="v2sensestarttask">/v2/senseStartTask<a class="headerlink" href="#v2sensestarttask" title="Permanent link">&para;</a></h3>
 <pre><code>  Purpose    : Start a Sense task. Can be used by upstream data providers to trigger reloads of Sense apps when new data is available.
   Parameters : taskId
-  Example    : curl http://&lt;FQDN or IP of Butler&gt;:8080/senseStartTask?taskId=abcd1234-5678-abcd-1234-abcd1234abcd
+  Example    : curl http://&lt;FQDN or IP of Butler&gt;:8080/v2/senseStartTask?taskId=abcd1234-5678-abcd-1234-abcd1234abcd
   Returns    : {"taskId":"abcd1234-5678-abcd-1234-abcd1234abcd"}
 </code></pre>
 <h3 id="v2slackpostmessage">/v2/slackPostMessage<a class="headerlink" href="#v2slackpostmessage" title="Permanent link">&para;</a></h3>
 <pre><code>  Purpose    : Post a message to a Slack channel. Normal Slack formatting options (emoijs, markdown etc) can be used.
   Parameters : channel, from_user, msg, emoij
-  Example    : curl -G http://&lt;FQDN or IP of Butler&gt;:8080/slackPostMessage --data-urlencode "channel=#sense-test-slack" --data-urlencode "msg=Butler posting to *Slack*" --data-urlencode "from_user=sa_scheduler" --data-urlencode "emoji=:test:"
+  Example    : curl -G http://&lt;FQDN or IP of Butler&gt;:8080/v2/slackPostMessage --data-urlencode "channel=#sense-test-slack" --data-urlencode "msg=Butler posting to *Slack*" --data-urlencode "from_user=sa_scheduler" --data-urlencode "emoji=:test:"
   Returns    : {"channel":"#sense-test-slack","msg":"Butler posting to *Slack*","from_user":"sa_scheduler","emoji":":test:"}
 </code></pre>
               

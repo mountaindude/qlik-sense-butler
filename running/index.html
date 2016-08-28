@@ -225,8 +225,10 @@ node butler.js
 <h2 id="process_monitors">Process monitors<a class="headerlink" href="#process_monitors" title="Permanent link">&para;</a></h2>
 <p>As Butler is the kind of server that (probably) should always be running on a server, it makes sense using a node.js process monitor to keep it alive.<br />
 <a href="https://github.com/Unitech/pm2">PM2</a> and <a href="https://github.com/foreverjs/forever">Forever</a> are two process monitors that both have been successfully tested with Butler.  </p>
-<p>One caveat with these is that it is hard to start them (and thus Butler) at server boot. It's easy to auto-executing the process monitor when a user logs into the server, but having the requirement that you log into the server immediately after server boot is of course less than ideal.<br />
-Options for solving this issue are currently being evaluated and tested.</p>
+<p>One caveat with these is that it is hard to start them (and thus Butler) when a Windows server is rebooted. 
+It's easy to auto-executing the process monitor when a user logs into the server, but having the requirement that you log into the server immediately after server boot is of course less than ideal. <br />
+<a href="https://www.npmjs.com/package/node-windows">node-windows</a> has been used with some success to achieve auto-start on Windows, it is however a bit tricky to set up. 
+Investigation into options is ongoing.</p>
               
             </div>
           </div>

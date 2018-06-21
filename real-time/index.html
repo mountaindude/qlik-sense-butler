@@ -7,19 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  
-  <title>Real time metrics - Butler documentation</title>
-  
-
   <link rel="shortcut icon" href="../img/favicon.ico">
-
-  
+  <title>Real time metrics - Butler documentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="../css/highlight.css">
-
   
   <script>
     // Current page data
@@ -30,9 +24,7 @@
   
   <script src="../js/jquery-2.1.1.min.js"></script>
   <script src="../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../js/highlight.pack.js"></script>
-  <script src="../js/theme.js"></script> 
-
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
   
   <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -62,122 +54,92 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        <ul class="current">
+	<ul class="current">
+	  
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="..">Home</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../overview/">Overview and features</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../overview/">Overview and features</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../getting-started/">Getting started</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../getting-started/">Getting started</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../project-layout/">Project layout</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../project-layout/">Project layout</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../install-config/">Installation and configuration</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../install-config/">Installation and configuration</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../running/">Running Butler</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../running/">Running Butler</a>
+	    </li>
           
-            <li>
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Features</span>
     <ul class="subnav">
-    <li><span>Features</span></li>
+                <li class="">
+                    
+    <a class="" href="../rest/">REST API</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../log-events/">Log event handlers</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Real time metrics</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#real_time_data_on_active_user_sessions">Real time data on active user sessions</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#active_users_data_as_mqtt_messages">Active users data as MQTT messages</a></li>
+        
+        </ul>
+    
 
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../rest/">REST API</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../log-events/">Log event handlers</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Real time metrics</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#real_time_data_on_active_user_sessions">Real time data on active user sessions</a></li>
-                
-                    <li><a class="toctree-l4" href="#active_users_data_as_mqtt_messages">Active users data as MQTT messages</a></li>
-                
-            
-            </ul>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../mqtt/">MQTT integration</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../udp-client/">UDP client</a>
-        
-    </li>
-
-        
     </ul>
-<li>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../mqtt/">MQTT integration</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../udp-client/">UDP client</a>
+                </li>
+    </ul>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../sample-code/">Examples</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../sample-code/">Examples</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../security/">Security considerations</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../security/">Security considerations</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../tools-used/">Tools used</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../tools-used/">Tools used</a>
+	    </li>
           
         </ul>
       </div>
@@ -208,9 +170,8 @@
     <li>Real time metrics</li>
     <li class="wy-breadcrumbs-aside">
       
-        
-          <a href="https://github.com/mountaindude/butler" class="icon icon-github"> Edit on GitHub</a>
-        
+        <a href="https://github.com/ptarmiganlabs/butler/edit/master/docs/real-time.md"
+          class="icon icon-github"> Edit on GitHub</a>
       
     </li>
   </ul>
@@ -227,6 +188,7 @@ For that reason Butler's tactic is to listen to log events to determine when use
 When Butler is first started, it will not know what sessions are currently active. Instead, it will collect that inforamation as time passes.<br />
 This means that the active user count, as well as what specific users are active, might be incorrect when Butler is first started. 
 The data will then become more and more exact as users end their sessions, and later restart them (Butler will then capture the session restart, and update its data structures accordingly).</p>
+<p>If there are demands for enterprise grade monitoring of a Qlik Sense environment, the <a href="https://github.com/ptarmiganlabs/butler-sos">Butler SOS</a> tool focuses exclusively on this and might be worth looking into.</p>
 <h2 id="active_users_data_as_mqtt_messages">Active users data as MQTT messages<a class="headerlink" href="#active_users_data_as_mqtt_messages" title="Permanent link">&para;</a></h2>
 <p>Butler publishes a set of MQTT messages relating to active sessions.<br />
 Whenever a session starts or ends, two MQT messages will be sent:  </p>
@@ -261,7 +223,7 @@ For example, using <a href="https://github.com/node-red/node-red-dashboard">Node
 
   Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-	  
+      
         </div>
       </div>
 
@@ -269,10 +231,10 @@ For example, using <a href="https://github.com/node-red/node-red-dashboard">Node
 
   </div>
 
-<div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://github.com/mountaindude/butler" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/ptarmiganlabs/butler/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
         <span><a href="../log-events/" style="color: #fcfcfc;">&laquo; Previous</a></span>
@@ -282,6 +244,10 @@ For example, using <a href="https://github.com/node-red/node-red-dashboard">Node
       
     </span>
 </div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
 
 </body>
 </html>

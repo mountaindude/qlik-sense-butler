@@ -236,8 +236,8 @@
 </tbody>
 </table>
 <h2 id="running_on_docker">Running on Docker<a class="headerlink" href="#running_on_docker" title="Permanent link">&para;</a></h2>
-<p>If you have access or can set up a Docker runtime environment, this is by far the preferred solution for running Butler. 
-Installation is less error prone that installing Butler natively, you get all the benefits from the Docker ecosystem (monitoring of running containers etc), and upgrades to future Butler versions become trivial.</p>
+<p>If you have access or can set up a Docker runtime environment, this is by far the preferred solution for running Butler.<br />
+Installation is less error prone compared to installing Butler natively, you get all the benefits from the Docker ecosystem (monitoring of running containers etc), and upgrades to future Butler versions become trivial.</p>
 <table>
 <thead>
 <tr>
@@ -342,7 +342,7 @@ proton:butler goran$
 
 </code></pre>
 
-<p>At this point you should </p>
+<p>At this point you should</p>
 <ol>
 <li>copy the certificates that you have exported from the Qlik Sense QMC, and</li>
 <li>copy the <a href="https://github.com/ptarmiganlabs/butler/blob/master/src/config/default_template.yaml">template config file</a> from the GitHub repository to the ./config directory, modify it as needed based on your system(s), and rename it to production.yaml.</li>
@@ -399,7 +399,7 @@ proton:~ goran$
 
 </code></pre>
 
-<p>Nice, looking good. </p>
+<p>Nice, looking good.</p>
 <p>In the terminal where you ran docker-compose, you will see a new line saying that a app list was retrieved:</p>
 <pre><code class="bash">butler           | 2018-09-26T14:40:32.740Z - debug: Server for UDP server: localhost
 butler           | 2018-09-26T14:40:32.746Z - info: REST server listening on http://[::]:8080

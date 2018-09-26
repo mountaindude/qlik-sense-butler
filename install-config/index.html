@@ -86,12 +86,24 @@
     
         <ul>
         
+            <li><a class="toctree-l3" href="#running_natively">Running natively</a></li>
+        
+            <li><a class="toctree-l3" href="#running_on_docker">Running on Docker</a></li>
+        
             <li><a class="toctree-l3" href="#windows_or_osx">Windows or OSX</a></li>
         
         </ul>
     
 
     <li class="toctree-l2"><a href="#installation">Installation</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#install_on_native_nodejs">Install on native Node.js</a></li>
+        
+            <li><a class="toctree-l3" href="#install_on_docker">Install on Docker</a></li>
+        
+        </ul>
     
 
     <li class="toctree-l2"><a href="#security_considerations">Security considerations</a></li>
@@ -199,6 +211,8 @@
               
                 <h1 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h1>
 <p>Butler depends on various pieces of software. Some are required, others are optional, as described below.</p>
+<h2 id="running_natively">Running natively<a class="headerlink" href="#running_natively" title="Permanent link">&para;</a></h2>
+<p>If you opt to run Butler nateively on Node.js installed on a computer, the following software is needed:</p>
 <table>
 <thead>
 <tr>
@@ -213,7 +227,7 @@
 </tr>
 <tr>
 <td>MQTT broker</td>
-<td>MQTT is used for both in- and out-bound pub-sub messaging. Butler assumes a working MQTT broker is available, the IP of which is defined in the Butler config file. Mosquitto is a nice open source broker. It requires very little hardware to run, even the smallest (free!) Amazon EC2 instance is enough, if you want a dedicated MQTT server. If you don't care about the pubsub features of Butler, you obviously don't need a MQTT broker.</td>
+<td>MQTT is used for both in- and out-bound pub-sub messaging. Butler assumes a working MQTT broker is available, the IP of which is defined in the Butler config file. Mosquitto is a nice open source broker. It requires very little hardware to run, even the smallest (free!) Amazon EC2 instance is enough, if you want a dedicated MQTT server. If you don't care about the pubsub features of Butler, you don't need a MQTT broker. In this case you can disable the MQTT features in the config YAML file.</td>
 </tr>
 <tr>
 <td>node.js</td>
@@ -221,15 +235,41 @@
 </tr>
 </tbody>
 </table>
+<h2 id="running_on_docker">Running on Docker<a class="headerlink" href="#running_on_docker" title="Permanent link">&para;</a></h2>
+<p>If you have access or can set up a Docker runtime environment, this is by far the preferred solution for running Butler. 
+Installation is less error prone that installing Butler natively, you get all the benefits from the Docker ecosystem (monitoring of running containers etc), and upgrades to future Butler versions become trivial.</p>
+<table>
+<thead>
+<tr>
+<th>What</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sense Enterprise</td>
+<td>Same as above.</td>
+</tr>
+<tr>
+<td>MQTT broker</td>
+<td>Same as above.</td>
+</tr>
+<tr>
+<td>Docker</td>
+<td>A Docker runtime environment on any supported platform. This means you can run Butler on any platform where Docker is available, including Linux, Mac OS, Windows and most cloud providers.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="windows_or_osx">Windows or OSX<a class="headerlink" href="#windows_or_osx" title="Permanent link">&para;</a></h2>
 <p>While Sense is a Windows only system, Butler should be able to run on any OS where node.js is available.<br />
 Butler has been succesfully used - both during development and production use - on Windows, Linux (Debian and Ubuntu tested) and OSX.</p>
 <h1 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h1>
-<p>Below are the general steps needed to install Butler. Please note that you might need to adapt these to your particular system configuration.   </p>
+<p>Below are the general steps needed to install Butler. Please note that you might need to adapt these to your particular system configuration.  </p>
+<h2 id="install_on_native_nodejs">Install on native Node.js<a class="headerlink" href="#install_on_native_nodejs" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p><strong>Install node.js</strong><br />
-  Butler has been developed and tested using the 64 bit version of <a href="https://nodejs.org/en/download/">node.js</a> 4.4.6.   </p>
+  Butler has been developed and tested using the 64 bit version of <a href="https://nodejs.org/en/download/">node.js</a> 8.11.4.  </p>
 </li>
 <li>
 <p><strong>Decide where to install Butler</strong><br />
@@ -250,32 +290,138 @@ npm install
 <p>This will download and install all node.js modules used by Butler.  </p>
 </li>
 <li>
-<p><strong>MQTT message broker</strong><br />
-Many of Butler's features use <a href="http://mqtt.org/">MQTT</a> for sending and receiving messages.<br />
-MQTT is a standardised messaging protocol, and it should be possible to use <a href="https://github.com/mqtt/mqtt.github.io/wiki/software?id=software">any broker following the MQTT standard</a>.  <br />
-Butler has been developed and tested using <a href="https://mosquitto.org/">Mosquitto</a> running on OSX and Debian Linux - both work flawlessly.</p>
-</li>
-<li>
-<p><strong>Documentation dependencies</strong><br />
-  If you plan to modify or extend Butler's documentation, you will need to install <a href="http://www.mkdocs.org/">MkDocs</a>.<br />
-  MkDocs is used to create the pages you are reading right now.</p>
+<p><strong>MQTT message broker</strong></p>
 </li>
 </ul>
+<p>Many of Butler's features use <a href="http://mqtt.org/">MQTT</a> for sending and receiving messages.<br />
+MQTT is a standardised messaging protocol, and it should be possible to use <a href="https://github.com/mqtt/mqtt.github.io/wiki/software?id=software">any broker following the MQTT standard</a>.<br />
+Butler has been developed and tested using <a href="https://mosquitto.org/">Mosquitto</a> running on OSX and Debian Linux - both work flawlessly.</p>
+<ul>
+<li><strong>Documentation dependencies</strong></li>
+</ul>
+<p>If you plan to modify or extend Butler's documentation, you will need to install <a href="http://www.mkdocs.org/">MkDocs</a>.<br />
+  MkDocs is used to create the pages you are reading right now.</p>
+<h2 id="install_on_docker">Install on Docker<a class="headerlink" href="#install_on_docker" title="Permanent link">&para;</a></h2>
+<p>The following steps should give some guidance on how to get Butler running on Docker.</p>
+<pre><code class="bash">proton:~ goran$ mkdir /Users/goran/butler
+proton:~ goran$ cd /Users/goran/butler
+proton:butler goran$ mkdir -p config/certificate
+proton:butler goran$
+proton:butler goran$ wget https://raw.githubusercontent.com/ptarmiganlabs/butler/master/src/docker-compose.yml
+--2018-09-26 16:27:14--  https://raw.githubusercontent.com/ptarmiganlabs/butler/master/src/docker-compose.yml
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 151.101.84.133
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|151.101.84.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 565 [text/plain]
+Saving to: 'docker-compose.yml.1'
+
+docker-compose.yml.1                                       100%[========================================================================================================================================&gt;]     565  --.-KB/s    in 0s
+
+2018-09-26 16:27:15 (6.34 MB/s) - 'docker-compose.yml.1' saved [565/565]
+
+proton:butler goran$ cat docker-compose.yml
+# docker-compose.yml
+version: '2.2'
+services:
+  verisure-mqtt:
+    image: ptarmiganlabs/butler:latest
+    container_name: butler
+    restart: always
+    ports:
+      - &quot;8180:8080&quot;     # REST API available on port 8180 to services outside the container
+      - &quot;9997:9997&quot;     # UDP port for session connection events
+      - &quot;9998:9998&quot;     # UDP port for task failure events
+    volumes:
+      # Make config file accessible outside of container
+      - &quot;./config:/nodeapp/config&quot;
+    environment:
+      - &quot;NODE_ENV=production&quot;
+    logging:
+      driver: json-file
+proton:butler goran$
+
+</code></pre>
+
+<p>At this point you should </p>
+<ol>
+<li>copy the certificates that you have exported from the Qlik Sense QMC, and</li>
+<li>copy the <a href="https://github.com/ptarmiganlabs/butler/blob/master/src/config/default_template.yaml">template config file</a> from the GitHub repository to the ./config directory, modify it as needed based on your system(s), and rename it to production.yaml.</li>
+</ol>
+<p>When done, you should see something like this:</p>
+<pre><code class="bash">proton:butler goran$ pwd
+/Users/goran/butler
+proton:butler goran$ ls -la
+total 8
+drwxr-xr-x   4 goran  staff   128 Sep 26 16:36 .
+drwxr-xr-x+ 59 goran  staff  1888 Sep 26 16:24 ..
+drwxr-xr-x   4 goran  staff   128 Sep 26 16:36 config
+-rw-r--r--   1 goran  staff   565 Sep 26 16:25 docker-compose.yml
+proton:butler goran$
+proton:butler goran$ ls -la config/
+total 8
+drwxr-xr-x  4 goran  staff   128 Sep 26 16:36 .
+drwxr-xr-x  4 goran  staff   128 Sep 26 16:36 ..
+drwxr-xr-x  6 goran  staff   192 Sep 26 16:36 certificate
+-rw-r--r--  1 goran  staff  1861 Sep 26 16:36 production.yaml
+proton:butler goran$
+proton:butler goran$ ls -la config/certificate/
+total 32
+drwxr-xr-x  6 goran  staff   192 Sep 26 16:36 .
+drwxr-xr-x  4 goran  staff   128 Sep 26 16:36 ..
+-rw-r--r--@ 1 goran  staff  1166 Sep 26 16:36 client.pem
+-rw-r--r--@ 1 goran  staff  1702 Sep 26 16:36 client_key.pem
+-rw-r--r--@ 1 goran  staff  1192 Sep 26 16:36 root.pem
+proton:butler goran$
+</code></pre>
+
+<p>At this point everything is ready and you can start the Butler container using docker-compose:</p>
+<pre><code class="bash">proton:butler goran$ docker-compose up
+Creating butler ... done
+Attaching to butler
+butler           | 2018-09-26T14:38:57.895Z - debug: Server for UDP server: localhost
+butler           | 2018-09-26T14:38:57.912Z - info: REST server listening on http://[::]:8080
+butler           | 2018-09-26T14:38:57.918Z - info: UDP server listening on 127.0.0.1:9997
+butler           | 2018-09-26T14:38:57.930Z - info: UDP server listening on 127.0.0.1:9998
+butler           | 2018-09-26T14:38:58.124Z - info: Connected to MQTT server 192.168.1.51:1884, with client ID mqttjs_215c09dc
+
+</code></pre>
+
+<p>If you don't have an MQTT server, you won't see the "...Connected to MQTT server" line.</p>
+<p>Let's make sure things are working by opening a new terminal window and from there requesting a list of all apps on the server:</p>
+<pre><code class="bash">proton:~ goran$
+proton:~ goran$ curl &quot;http://localhost:8180/v2/senseListApps&quot;
+[{&quot;id&quot;:&quot;492a1bca-1c41-4a01-9104-543a2334c465&quot;,&quot;name&quot;:&quot;2018 sales targets&quot;},
+{&quot;id&quot;:&quot;5b243cb2-8d00-44c9-b865-08b00a0af18b&quot;,&quot;name&quot;:&quot;App 1&quot;},
+...
+...
+{&quot;id&quot;:&quot;181d101f-986c-49c5-a457-d351058c05b4&quot;,&quot;name&quot;:&quot;Template app 1 DEV&quot;}]
+proton:~ goran$
+
+</code></pre>
+
+<p>Nice, looking good. </p>
+<p>In the terminal where you ran docker-compose, you will see a new line saying that a app list was retrieved:</p>
+<pre><code class="bash">butler           | 2018-09-26T14:40:32.740Z - debug: Server for UDP server: localhost
+butler           | 2018-09-26T14:40:32.746Z - info: REST server listening on http://[::]:8080
+butler           | 2018-09-26T14:40:32.748Z - info: UDP server listening on 127.0.0.1:9997
+butler           | 2018-09-26T14:40:32.750Z - info: UDP server listening on 127.0.0.1:9998
+butler           | 2018-09-26T14:43:05.381Z - info: Getting list of all apps
+
+</code></pre>
+
 <h1 id="security_considerations">Security considerations<a class="headerlink" href="#security_considerations" title="Permanent link">&para;</a></h1>
 <ul>
-<li>
-<p>You should make sure to configure the firewall of the server where Buter is running, so it only accepts connections from the desired clients/IP addresses.
-A reasonable first approach would be to configure the firewall to only allow calls from localhost. That way calls to Butler can only be made from the server where Butler itself is running.</p>
-</li>
-<li>
-<p>As of right now the MQTT connections are not secured by certificates or passwords.
-For use within a controlled network that might be fine, but nonetheless something to keep in mind. Adding certificate based authentication (which MQTT supports) would solve this.  </p>
-</li>
-<li>
-<p>Butler uses various node.js modules from <a href="https://www.npmjs.com/">npm</a>. If concerned about security, you should review these dependencies and decide whether there are issues in them or not.<br />
-Same thing with Butler itself - while efforts have been made to make Butler secure, you need to decide for yourself whether the level of security is enough for your use case.  </p>
-</li>
+<li>You should make sure to configure the firewall of the server where Buter is running, so it only accepts connections from the desired clients/IP addresses.</li>
 </ul>
+<p>A reasonable first approach would be to configure the firewall to only allow calls from localhost. That way calls to Butler can only be made from the server where Butler itself is running.</p>
+<ul>
+<li>As of right now the MQTT connections are not secured by certificates or passwords.</li>
+</ul>
+<p>For use within a controlled network that might be fine, but nonetheless something to keep in mind. Adding certificate based authentication (which MQTT supports) would solve this.  </p>
+<ul>
+<li>Butler uses various node.js modules from <a href="https://www.npmjs.com/">npm</a>. If concerned about security, you should review these dependencies and decide whether there are issues in them or not.  </li>
+</ul>
+<p>Same thing with Butler itself - while efforts have been made to make Butler secure, you need to decide for yourself whether the level of security is enough for your use case.  </p>
 <p>Butler is continuously checked for security vulnerabilities by using <a href="https://snyk.io/">Snyk</a>, with status badges shown in the readme files.</p>
 <h1 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h1>
 <p>Butler uses configuration files in YAML format. The config files are stored in the src\config folder. Prior to v2.1 JSON config files were used, but as YAML is much more human readable than JSON, a switch was made. JSON config files can still be used, but YAML is the default starting with v2.1.</p>
@@ -344,36 +490,29 @@ Butler:
 
 <p>Comments:</p>
 <ul>
-<li>
-<p>Currently Butler assumes that a MQTT broker is present, and that status messages should be sent to Slack. Butler will fail with error messages if it cannot connect to a MQTT server, or if the Slack Webhook URL is not properly set.<br />
-Future versions may make MQTT, Slack and other similar channels optional, using the config file.  </p>
-</li>
-<li>
-<p>The default location cert/key files are found in (assuming a standard install of Qlik Sense) C:\ProgramData\Qlik\Sense\Repository\Exported Certificates.Local Certificates<br />
-The files to use are <code>client.pem</code> and <code>client_key.pem</code>. The config file can point straight to these files.<br />
-Or export a new client cert/keys from the QMC and use these with Butler.</p>
-</li>
+<li>Currently Butler assumes that a MQTT broker is present, and that status messages should be sent to Slack. Butler will fail with error messages if it cannot connect to a MQTT server, or if the Slack Webhook URL is not properly set.  </li>
 </ul>
+<p>Future versions may make MQTT, Slack and other similar channels optional, using the config file.  </p>
+<ul>
+<li>The default location cert/key files are found in (assuming a standard install of Qlik Sense) C:\ProgramData\Qlik\Sense\Repository\Exported Certificates.Local Certificates  </li>
+</ul>
+<p>The files to use are <code>client.pem</code> and <code>client_key.pem</code>. The config file can point straight to these files.<br />
+Or export a new client cert/keys from the QMC and use these with Butler.</p>
 <h1 id="log4net_extender_config_files">log4net extender config files<a class="headerlink" href="#log4net_extender_config_files" title="Permanent link">&para;</a></h1>
 <p>Butler includes a couple of xml files that when deployed to the Sense server will create real-time UDP messages for certain events (tasks failing, user sessions starting/ending etc).<br />
 These xml files should be deployed as follows:  </p>
 <ul>
-<li>Task failure events  <ul>
+<li>Task failure events  </li>
 <li>XML file found in log4net_task-failed/LocalLogConfig.xml. This file includes settings to both send an email, and a UDP message when a task fails.</li>
 <li>XML file should be deployed to the server where reloads are done, in the C:\ProgramData\Qlik\Sense\Scheduler directory</li>
-</ul>
-</li>
-<li>User audit events<ul>
+<li>User audit events</li>
 <li>XML file found in log4net_user-audit-event/LocalLogConfig.xml</li>
 <li>XML file should be deployed on the server where the proxy is running, in the C:\ProgramData\Qlik\Sense\Proxy directory</li>
 <li>If there multiple proxies on different servers, it might make sense deploying the xml file on all of them, to capture all user audit events.</li>
 </ul>
-</li>
-</ul>
 <h1 id="customisation">Customisation<a class="headerlink" href="#customisation" title="Permanent link">&para;</a></h1>
-<p>As Butler offers a rather diverse set of features, everyone might not need all features. There is no single config file in which individual features can be turned on/off, 
-but given the structure of the Butler source code it is relatively easy to disable speciifc features, or add new ones.<br />
-For example, to disable a particular REST API endpoint, you could just remove the registration of that endpoint from within the src/butler.js file.</p>
+<p>As Butler offers a rather diverse set of features, everyone might not need all features. There is no single config file in which individual features can be turned on/off, but given the structure of the Butler source code it is relatively easy to disable speciifc features, or add new ones.</p>
+<p>For example, to disable a particular REST API endpoint, you could just remove the registration of that endpoint from within the src/butler.js file.</p>
               
             </div>
           </div>
